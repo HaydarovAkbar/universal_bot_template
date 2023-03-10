@@ -1,0 +1,9 @@
+# REAL
+TOKEN = "6265371899:AAH6ZdZYkNnol0gjN4NlB_V8SxPVQImojW0"
+BOT_USERNAME = "AiGeneratedPhotoBot"
+
+# # TEST
+# TOKEN = ""
+# BOT_USERNAME = ""
+
+DEVELOPER = [758934089, ]
