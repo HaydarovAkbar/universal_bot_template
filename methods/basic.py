@@ -9,11 +9,27 @@ from database.user_db import DatabaseDB
 
 database_db = DatabaseDB()
 
+# def start(update, context):
+#     try:
+#         chat_id = update.message.chat.id
+#         if not database_data.get_user_if_id(chat_id):
+#             print("1. ")
+#             database_data.set(update.message.from_user.first_name, update.message.from_user.username, chat_id)
+#         update.message.reply_html(text="🔥 <b>Assalomu alaykum, Textni ovozli ko'rinishda o'qib beradigan botga xush "
+#                                        "kelibsiz qaysi tildagi textni ovozli ko'rinishga o'tkarmoqchisiz tanlang\n\n"
+#                                        "🔥 Здравствуйте, и добро пожаловать в бота, который читает текст в аудио. "
+#                                        "Выберите язык, на котором вы хотите преобразовать текст в аудио.\n\n"
+#                                        "🔥 Hello, and welcome to the bot that reads the text in audio. "
+#                                        "Choose the language in which you want to convert the text to audio.</b>",
+#                                   reply_markup=lang_batton())
+#         return 1
+#     except Exception as e:
+#         context.bot.send_message(chat_id=758934089, text=f"Error: {e}")
 
 def start(update: Update, context: CallbackContext):
     user = update.effective_chat
-    now = datetime.now().strftime("%Y-%m-%d %H:%M")
     if not database_db.get_user_if_id(user.id):
+        now = datetime.now().strftime("%Y-%m-%d %H:%M")
         _ = database_db.insert_start_user(user.id, user.username, now, user.first_name)
     channels = database_db.get_all_channel_id()
     is_subscribed_ = is_subscribed(channels, user.id)
